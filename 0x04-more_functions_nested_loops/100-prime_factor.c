@@ -1,37 +1,39 @@
 /*
- * File: 10-print_triangle.c
+ * File: 100-prime_factor.c
  * Author: amir-ee
  *
  * Description:
- * This program prints a triangle pattern using the '#' character,
- * with each line having an increasing number of '#' symbols.
+ * This program finds and prints the largest prime factor of the number 612852475143.
  */
 
-#include "main.h"
+#include <stdio.h>
 
 /**
- * print_triangle - Prints a triangle pattern using the '#' character.
- * @size: The size of the triangle.
+ * main - Entry point of the program.
+ *
+ * Return: Always 0.
  */
-void print_triangle(int size)
+int main(void)
 {
-	int row, spaces, hashes;
+	long prime = 612852475143, div;
 
-	if (size > 0)
+	/* Divide by 2 until prime is odd */
+	while (prime % 2 == 0)
 	{
-		for (row = 1; row <= size; row++)
+		prime /= 2;
+	}
+
+	/* Check odd divisors */
+	for (div = 3; div <= prime / 2; div += 2)
+	{
+		while (prime % div == 0)
 		{
-			for (spaces = size - row; spaces > 0; spaces--)
-				_putchar(' '); /* Print spaces */
-
-			for (hashes = 1; hashes <= row; hashes++)
-				_putchar('#'); /* Print '#' symbols */
-
-			if (row != size)
-				_putchar('\n'); /* Move to the next line */
+			prime /= div;
 		}
 	}
 
-	_putchar('\n'); /* Print a newline character at the end */
+	printf("%ld\n", prime);
+
+	return (0);
 }
 
