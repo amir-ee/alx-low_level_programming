@@ -1,12 +1,11 @@
 /*
-/*
  * File: 9-fizz_buzz.c
- * Author: amiir
+ * Author: amir-ee
  *
  * Description:
- * This program prints the numbers from 1 to 100, but for multiples of three,
- * "Fizz" is printed instead of the number, for multiples of five, "Buzz",
- * and for multiples of both three and five, "FizzBuzz".
+ *   This program prints the numbers from 1 to 100, but for multiples of three,
+ *   "Fizz" is printed instead of the number, for multiples of five, "Buzz",
+ *   and for multiples of both three and five, "FizzBuzz".
  */
 
 #include <stdio.h>
