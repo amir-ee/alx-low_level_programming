@@ -8,16 +8,20 @@
 void rev_string(char *s)
 {
 	int start = 0;
-	int end = strlen(s) - 1;
+	int end = 0;
 	char temp;
 
-	while (start < end)
+	while (*(s + end) != '\0')
 	{
-		temp = s[start];
-		s[start] = s[end];
-		s[end] = temp;
-		start++;
-		end--;
+		end++;
+	}
+	end--;
+
+	for (start = 0; start < end; start++, end--)
+	{
+		temp = *(s + start);
+		*(s + start) = *(s + end);
+		*(s + end) = temp;
 	}
 }
 
@@ -31,33 +35,42 @@ void rev_string(char *s)
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int overflow = 0, first_number_index = strlen(n1) - 1,
-		second_number_index = strlen(n2) - 1,
-		result_string_length = 0;
-	int val1, val2, temp_tot;
+	int overflow = 0, i = 0, j = 0, digits = 0;
+	int val1 = 0, val2 = 0, temp_tot = 0;
 
-	while (first_number_index >= 0 || second_number_index >= 0 || overflow == 1)
+	while (*(n1 + i) != '\0')
+		i++;
+	while (*(n2 + j) != '\0')
+		j++;
+	i--;
+	j--;
+	if (j >= size_r || i >= size_r)
+		return (0);
+	while (j >= 0 || i >= 0 || overflow == 1)
 	{
-		if (first_number_index < 0)
+		if (i < 0)
 			val1 = 0;
 		else
-			val1 = n1[first_number_index] - '0';
-		if (second_number_index < 0)
+			val1 = *(n1 + i) - '0';
+		if (j < 0)
 			val2 = 0;
 		else
-			val2 = n2[second_number_index] - '0';
+			val2 = *(n2 + j) - '0';
 		temp_tot = val1 + val2 + overflow;
-		overflow = temp_tot >= 10;
-		if (result_string_length >= size_r - 1)
-			return (NULL);
-		r[result_string_length++] = temp_tot % 10 + '0';
-		first_number_index--;
-		second_number_index--;
+		if (temp_tot >= 10)
+			overflow = 1;
+		else
+			overflow = 0;
+		if (digits >= (size_r - 1))
+			return (0);
+		*(r + digits) = (temp_tot % 10) + '0';
+		digits++;
+		j--;
+		i--;
 	}
-	if (result_string_length == size_r)
-		return (NULL);
-	r[result_string_length] = '\0';
+	if (digits == size_r)
+		return (0);
+	*(r + digits) = '\0';
 	rev_string(r);
 	return (r);
 }
-
