@@ -2,14 +2,11 @@
 #include <stdlib.h>
 
 /**
- * main - Entry point
+ * main - a program that adds numbers
+ * @argc: the number of arguments, including the program name
+ * @argv: an array containing the program arguments
  *
- * Description: Program that adds positive numbers provided as command-line arguments.
- *
- * @argc: The number of arguments, including the program name.
- * @argv: An array containing the program arguments.
- *
- * Return: 0 if successful, non-zero otherwise.
+ * Return: 0 if successful, 1 otherwise
  */
 int main(int argc, char *argv[])
 {
