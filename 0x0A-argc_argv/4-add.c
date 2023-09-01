@@ -3,39 +3,39 @@
 #include <ctype.h>
 
 /**
- * main - entry point
+ * main - Entry point
  *
- * Description: Program that adds positive numbers.
+ * Description: Program that adds positive numbers provided as command-line arguments.
  *
- * @argc: number of arguments
- * @argv: an array of arguments
+ * @argc: The number of arguments, including the program name.
+ * @argv: An array containing the program arguments.
  *
- * Return: 0 (successful)
+ * Return: 0 if successful, non-zero otherwise.
  */
+
 int main(int argc, char **argv)
 {
-    int i, res = 0;
+	int i, res = 0;
 
-    for (i = 1; i < argc; i++)
-    {
-        char *current_arg = argv[i];
-        char *ptr = current_arg;
+	for (i = 1; i < argc; i++)
+	{
+		char *current_arg = argv[i];
+		char *ptr = current_arg;
 
-        while (*ptr != '\0')
-        {
-            if (!isdigit(*ptr))
-            {
-                printf("Error\n");
-                return (1);
-            }
-            ptr++;
-        }
+		while (*ptr != '\0')
+		{
+			if (!isdigit(*ptr))
+			{
+				printf("Error\n");
+				return (1);
+			}
+			ptr++;
+		}
 
-        res += atoi(current_arg);
-    }
+		res += atoi(current_arg);
+	}
 
-    printf("%d\n", res);
+	printf("%d\n", res);
 
-    return (0);
+	return (0);
 }
-
