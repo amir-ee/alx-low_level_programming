@@ -10,12 +10,12 @@
  *
  * Return: 0 (successful)
  */
-int main(__attribute__((unused)) int argc, char **argv)
+int main(int argc, char **argv)
 {
-    char *program_name = argv[0];
+	(void)argc;
 
-    printf("%s\n", program_name);
+	printf("%s\n", *argv);
 
-    return (0);
+
+	return (0);
 }
-
