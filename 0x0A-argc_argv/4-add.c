@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 /**
  * main - Entry point
@@ -12,30 +11,35 @@
  *
  * Return: 0 if successful, non-zero otherwise.
  */
-
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int i, res = 0;
+	int result = 0;
+	int i = 1;
+	int j;
 
-	for (i = 1; i < argc; i++)
+	if (argc < 2)
 	{
-		char *current_arg = argv[i];
-		char *ptr = current_arg;
+		printf("0\n");
+		return (0);
+	}
 
-		while (*ptr != '\0')
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j] != '\0')
 		{
-			if (!isdigit(*ptr))
+			/* If character is not a digit */
+			if (argv[i][j] < '0' || argv[i][j] > '9')
 			{
 				printf("Error\n");
 				return (1);
 			}
-			ptr++;
+			j++;
 		}
-
-		res += atoi(current_arg);
+		result += atoi(argv[i]);
+		i++;
 	}
 
-	printf("%d\n", res);
-
+	printf("%d\n", result);
 	return (0);
 }
