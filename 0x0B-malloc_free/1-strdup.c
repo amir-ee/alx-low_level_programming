@@ -8,7 +8,7 @@
  * Return: On success, returns a pointer to the duplicated string. If str is
  *         NULL or if memory allocation fails, returns NULL.
  *
- * Author: Nour Mellal
+ * Author: amir-ee
  */
 char *_strdup(char *str)
 {
