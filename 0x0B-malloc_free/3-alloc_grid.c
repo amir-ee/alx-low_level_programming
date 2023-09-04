@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * alloc_grid - function that allocates memory for a 2D grid of integers
  * @width: width of the grid
@@ -9,42 +7,44 @@
  * NULL if width or height is <= 0
  * Author: amir-ee
  */
+#include "main.h"
+
 int **alloc_grid(int width, int height)
 {
-    int **twod;
-    int hgt_index, wid_index;
+	int **twod;
+	int hgt_index, wid_index;
 
-    if (width <= 0 || height <= 0)
-        return (NULL);
+	if (width <= 0 || height <= 0)
+		return (NULL);
 
-    twod = malloc(sizeof(int *) * height);
+	twod = malloc(sizeof(int *) * height);
 
-    if (twod == NULL)
-        return (NULL);
+	if (twod == NULL)
+		return (NULL);
 
-    for (hgt_index = 0; hgt_index < height; hgt_index++)
-    {
-        twod[hgt_index] = malloc(sizeof(int) * width);
+	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	{
+		twod[hgt_index] = malloc(sizeof(int) * width);
 
-        if (twod[hgt_index] == NULL)
-        {
-            for (int i = 0; i < hgt_index; i++)
-            {
-                free(twod[i]);
-            }
-            free(twod);
-            return (NULL);
-        }
-    }
+		if (twod[hgt_index] == NULL)
+		{
+			for (int i = 0; i < hgt_index; i++)
+			{
+				free(twod[i]);
+			}
+			free(twod);
+			return (NULL);
+		}
+	}
 
-    for (hgt_index = 0; hgt_index < height; hgt_index++)
-    {
-        for (wid_index = 0; wid_index < width; wid_index++)
-        {
-            twod[hgt_index][wid_index] = 0;
-        }
-    }
+	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	{
+		for (wid_index = 0; wid_index < width; wid_index++)
+		{
+			twod[hgt_index][wid_index] = 0;
+		}
+	}
 
-    return (twod);
+	return (twod);
 }
 
