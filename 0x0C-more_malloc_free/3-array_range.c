@@ -13,22 +13,22 @@
  */
 int *array_range(int min, int max)
 {
-    int size, i;
-    int *result_array;
+	int size, i;
+	int *result_array;
 
-    if (min > max)
-        return (NULL);
+	if (min > max)
+		return (NULL);
 
-    size = max - min + 1;
+	size = max - min + 1;
 
-    result_array = malloc(sizeof(int) * size);
+	result_array = malloc(sizeof(int) * size);
 
-    if (result_array == NULL)
-        return (NULL);
+	if (result_array == NULL)
+		return (NULL);
 
-    for (i = 0; min <= max; i++)
-        result_array[i] = min++;
+	for (i = 0; min <= max; i++)
+		result_array[i] = min++;
 
-    return (result_array);
+	return (result_array);
 }
 
