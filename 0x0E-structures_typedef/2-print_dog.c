@@ -6,6 +6,7 @@
  * print_dog - Prints a struct of type dog
  * @d: Pointer to a struct of type dog
  *
+ * Description:
  * This function takes a pointer to a struct of type dog and prints out its
  * contents. If the pointer is NULL, the function returns without printing
  * anything. If the name or owner members of the struct are NULL, the function
