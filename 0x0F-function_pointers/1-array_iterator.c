@@ -1,25 +1,28 @@
 #include "function_pointers.h"
 
 /**
- * array_iterator - Apply a given function to each element of an integer array
- * @array: Pointer to an integer array
- * @size: Size of the array
- * @action: Pointer to a function that takes an integer argument and
- *          returns no value
+ * array_iterator - Iterates over an array and performs a specified action on each element
+ *
+ * @array: The array to iterate over
+ * @size: The size of the array
+ * @action: A pointer to the action (function) to perform on each array element
  *
  * Description:
- * This function iterates over each element of the integer array 'array' and
- * applies the provided function 'action' to each element. If either the 'array'
- * or 'action' pointer is NULL, the function returns without performing any
- * actions.
+ * This function iterates over each element of the given array and applies the
+ * specified action to each element. The 'size' parameter indicates the number
+ * of elements in the array. If 'array' is NULL or 'action' is NULL, the
+ * function does nothing.
  */
+
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	unsigned int i;
+	size_t i;
 
-	if (!array || !action)
+	if (!array || !action || size <= 0)
 		return;
 
 	for (i = 0; i < size; i++)
+	{
 		action(array[i]);
+	}
 }
