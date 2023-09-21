@@ -1,17 +1,17 @@
 #include "lists.h"
 
 /**
- * add_node - Adds a new node containing a string to the beginning of a linked list.
+ * add_node - Adds a new node containing a string to of a linked list.
  * @head: A pointer to the pointer to the head of the linked list.
  * @str: The string to be stored in the new node.
  *
  * Description:
- * This function creates a new node and adds it to the beginning of a singly-linked list.
+ * This function creates a new node and adds it to the a singly-linked list.
  * It updates the head pointer to point to the new node.
  *
  * Return:
- * On success, returns a pointer to the new head of the list (which is the newly created node).
- * On failure (e.g., memory allocation failure or invalid input parameters), returns NULL.
+ * On success, returns a pointer to the new head of.
+ * On failure (e.g., memory allocation failure or invalid input parameters).
  */
 
 list_t *add_node(list_t **head, const char *str)
