@@ -13,31 +13,17 @@
 
 size_t print_list(const list_t *h)
 {
-	if (!h)
+	size_t elem;
+
+	elem = 0;
+	while (h != NULL)
 	{
-		return (0); /* Empty list, nothing to print */
-	}
-
-	size_t numberOfNodes = 0;
-
-	while (h)
-	{
-		const char *value = h->str;
-		size_t size = h->len;
-
-		/* Check for NULL string pointer */
-		if (!value)
-		{
-			value = "(nil)";
-			size = 0;
-		}
-
-		printf("[%lu] %s\n", size, value);
-
+		if (h->str == NULL)
+			printf("[%d] %s\n", 0, "(nil)");
+		else
+			printf("[%d] %s\n", h->len, h->str);
 		h = h->next;
-		numberOfNodes++;
+		elem++;
 	}
-
-	return (numberOfNodes);
+	return (elem);
 }
-
