@@ -4,6 +4,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * struct listint_s - A singly linked list of integers
+ * @n: The integer value stored in the node
+ * @next: A pointer to the next node in the list
+ *
+ * Description: This structure represents a node in a singly linked
+ * list of integers. It contains an integer value 'n' and a pointer
+ * to the next node in the list.
+ */
+typedef struct listint_s
+{
+	int n;
+	struct listint_s *next;
+} listint_t;
 
 size_t print_listint(const listint_t *h);
 size_t listint_len(const listint_t *h);
