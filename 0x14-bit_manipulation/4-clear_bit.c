@@ -6,7 +6,7 @@
  * @index: The index of the bit to clear (0 being the least significant bit).
  *
  * Description:
- * This function clears (sets to 0) the bit at the specified index in the unsigned
+ * This function clear sets to 0 the bit at the specified index in the unsigned
  * long integer 'n'. The least significant bit is at index 0.
  *
  * Return: 1 on success, or -1 if index is out of range.
