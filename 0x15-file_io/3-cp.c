@@ -4,10 +4,15 @@ char *create_buffer(char *file);
 void close_file(int fd);
 
 /**
- * create_buffer - creates a buffer of 1024 bytes
- * @file: the name of the file to write to
+ * create_buffer - Create a buffer for reading from a file.
+ * @file: The name of the file associated with the buffer (for error message).
  *
- * Return: pointer to the buffer
+ * Description:
+ * This function allocates a buffer of size 1024 bytes for reading from a file.
+ * If the allocation fails, it prints an error message to STDERR and exits with
+ * an error code.
+ *
+ * Return: A pointer to the allocated buffer on success, or exits on failure.
  */
 char *create_buffer(char *file)
 {
@@ -26,16 +31,21 @@ char *create_buffer(char *file)
 }
 
 /**
- * close_file - closes a file
- * @fd: the file descriptor to close
+ * close_file - Close a file descriptor and handle errors.
+ * @fd: The file descriptor to close.
  *
- * Return: nothing
+ * Description:
+ * This function to close the given file descriptor 'fd'. If the closing
+ * operation fails, it prints an error to STDERR and exits with an error
+ * code.
+ *
+ * Return: None. It exits on error.
  */
 void close_file(int fd)
 {
-	int c;
+	int lao;
 
-	c = close(fd);
+	lao = close(fd);
 
 	if (c == -1)
 	{
@@ -45,11 +55,16 @@ void close_file(int fd)
 }
 
 /**
- * main - copies the contents of one file to another
- * @argc: the number of arguments
- * @argv: an array containing the arguments
+ * main - Entry point for the file copy program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings containing the command-line arguments.
  *
- * Return: 0 on success, non-zero on failure
+ * Description:
+ * This program copies the contents of one file specified by argv[1] to another
+ * file (specified by argv[2]). If the program is called with incorrect usage,
+ * it exits with an error message.
+ *
+ * Return: 0 on success, or an error code on failure.
  */
 int main(int argc, char *argv[])
 {
