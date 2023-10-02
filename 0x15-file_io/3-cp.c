@@ -4,10 +4,15 @@ char *create_buffer(char *file);
 void close_file(int fd);
 
 /**
- * create_buffer - creates a buffer of 1024 bytes
- * @file: the name of the file to write to
+ * create_buffer - Create a buffer for reading from a file.
+ * @file: The name of the file associated with the buffer (for error message).
  *
- * Return: pointer to the buffer
+ * Description:
+ * This function allocates a buffer of size 1024 bytes for reading from a file.
+ * If the allocation fails, it prints an error message to STDERR and exits with
+ * an error code.
+ *
+ * Return: A pointer to the allocated buffer on success, or exits on failure.
  */
 char *create_buffer(char *file)
 {
