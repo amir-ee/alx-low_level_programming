@@ -55,11 +55,16 @@ void close_file(int fd)
 }
 
 /**
- * main - copies the contents of one file to another
- * @argc: the number of arguments
- * @argv: an array containing the arguments
+ * main - Entry point for the file copy program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings containing the command-line arguments.
  *
- * Return: 0 on success, non-zero on failure
+ * Description:
+ * This program copies the contents of one file specified by argv[1] to another
+ * file (specified by argv[2]). If the program is called with incorrect usage,
+ * it exits with an error message.
+ *
+ * Return: 0 on success, or an error code on failure.
  */
 int main(int argc, char *argv[])
 {
