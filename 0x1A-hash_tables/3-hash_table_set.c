@@ -1,62 +1,74 @@
 #include "hash_tables.h"
 
 /**
- * check_collision_in_node - check for collision in the hole list
- * @head: head of the linked list
- * @key: hash table key
- * Return: 1 for success, 0 for failure
+ * create_new_node - Creates a new hash table node.
+ * @key: The key for the new node.
+ * @value: The value for the new node.
  *
-*/
-hash_node_t *check_collision_in_node(hash_node_t *head, const char *key)
+ * Return: A pointer to the newly created node, or NULL on failure.
+ */
+hash_node_t *create_new_node(const char *key, const char *value)
 {
-	hash_node_t *tmp = head;
+	hash_node_t *new_node = malloc(sizeof(hash_node_t));
 
-	while (tmp)
+	if (!new_node)
+		return (NULL);
+
+	new_node->key = strdup(key);
+	new_node->value = strdup(value);
+	new_node->next = NULL;
+
+	if (!new_node->key || !new_node->value)
 	{
-		if (strcmp(tmp->key, key) == 0)
-			return (tmp);
-
-		tmp = tmp->next;
+		free(new_node->key);
+		free(new_node->value);
+		free(new_node);
+		/* adding null 145 */
+		new_node = NULL;
+		return (NULL);
 	}
-	return (tmp);
+
+	return (new_node);
 }
 
 /**
-* hash_table_set - Description: The function hash_table_set adds or
-* updates the value of a key in a hash table.
-* Parameters:
-*    @ht: the hash table to be manipulated
-*    @key: the key to be added or updated
-*    @value: the value to be associated with the key
-* Return: Returns 1 if successful, 0 if an error occurred
-*/
+ * hash_table_set - Inserts a key-value pair into a hash table.
+ * @ht: A pointer to the hash table.
+ * @key: The key to insert.
+ * @value: The value to associate with the key.
+ *
+ * Return: 1 on success, 0 on failure.
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new, *tmp;
-	unsigned long int idx, size;
+	unsigned long int current_idx;
+	hash_node_t *new_node;
 
-	if (ht == NULL || key == NULL || value == NULL || *key == '\0')
+	if (!ht || !key || !value)
 		return (0);
 
-	size = ht->size;
-	idx = key_index((const unsigned char *)key, size);
-	tmp = check_collision_in_node(ht->array[idx], key);
+	current_idx = key_index((unsigned char *)key, ht->size);
+	new_node = create_new_node(key, value);
 
-	if (tmp)
+	if (!new_node)
+		return (0);
+
+	if (!ht->array[current_idx])
 	{
-		free(tmp->value);
-		tmp->value = strdup(value);
-		return (1);
+		ht->array[current_idx] = new_node;
 	}
-	new = malloc(sizeof(hash_node_t));
-	if (new == NULL)
-		return (0);
-
-	new->value = strdup(value);
-	new->key = strdup(key);
-	new->next = ht->array[idx];
-	ht->array[idx] = new;
-
+	else
+	{
+		if (strcmp(key, ht->array[current_idx]->key) == 0)
+		{
+			strcpy(ht->array[current_idx]->value, value);
+		}
+		else
+		{
+			new_node->next = ht->array[current_idx];
+			ht->array[current_idx] = new_node;
+		}
+	}
 
 	return (1);
 }
